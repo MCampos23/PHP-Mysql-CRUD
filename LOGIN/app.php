@@ -1,0 +1,1 @@
+<h1>Estás dentro de la aplicación</h1>
