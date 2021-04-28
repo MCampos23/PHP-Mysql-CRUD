@@ -23,31 +23,38 @@
                         <p class="p-2">Already have an account? <br><a href="index.php">Login</a></p>
                     </form>
                 </div>
+                <?php require('includes/messages.php')?>
             </div>
         </div>
     </div>
-
     <?php
     if (isset($_POST['login'])) {
 
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
-        if (findRepeatMail($email, $conection) == 1) {
-            echo "This email already exists";
-        } else {
 
+        if (findRepeatMail($email, $conection) == 1) {
+            $_SESSION['message']="This email is already registered" ;
+            $_SESSION['message_type']='warning';
+            header('Location: signup.php');
+        } else {
             if ($password == $confirm_password) {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $query = "INSERT INTO `users`( `email`, `password`) VALUES ('$email','$hashed_password')";
                 $query_result = mysqli_query($conection, $query);
-
+                $_SESSION['message']='User created succesfully. Enter your details to login';
+                $_SESSION['message_type']='success';
                 header("Location: index.php");
+            }else{
+                $_SESSION['message']="The password and the confirmation password doesn't match" ;
+                $_SESSION['message_type']='warning';
+                header('Location: signup.php');
             }
         }
     }
     function findRepeatMail($em, $conection){
-        $sql = "SELECT * FROM users WHERE email=$em";
+        $sql = "SELECT * FROM users WHERE email='$em'";
         $result = mysqli_query($conection, $sql);
         if (mysqli_num_rows($result) > 0) {
             return 1;

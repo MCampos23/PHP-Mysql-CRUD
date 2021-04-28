@@ -19,7 +19,8 @@ if (isset($_POST['update'])) {
     if ($title != "" && $description != "") {
         $query = "UPDATE `tasks` SET title = '$title', description = '$description' WHERE id = $id";
         mysqli_query($conn, $query);
-        header("Location: index.php");
+        $_SESSION['message'] = "Task edited succesfully";
+        $_SESSION['message_type'] = "success";     
     } else {
         $_SESSION['message'] = "Please complete the fields";
         $_SESSION['message_type'] = "warning";
@@ -39,19 +40,12 @@ if (isset($_POST['update'])) {
                     <textarea name="description" rows="2" placeholder="Task Description" class="form-control"><?php echo $description ?></textarea>
                 </div>
                 <button type="submit" name="update" class="btn btn-success">Update</button>
+                <a class="btn btn-primary" href="index.php">Go back to list</a>
             </form>
 
         </div>
 
-        <?php if (isset($_SESSION['message'])) { ?>
-            <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show mt-3" role="alert">
-                <?= $_SESSION['message'] ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-
-
-        <?php session_unset();
-        } ?>
+        <?php include('includes/messages.php') ?>
     </div>
 
 </div>
