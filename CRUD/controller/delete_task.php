@@ -1,7 +1,7 @@
 <?php
 
 
-include("db.php");
+include("../db.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 
         $_SESSION['message'] = "Task succesfully deleted";
         $_SESSION['message_type'] = "warning";
-        header("Location: index.php");
+        header("Location: ../index.php?col=default");
     }
 };
 ?>

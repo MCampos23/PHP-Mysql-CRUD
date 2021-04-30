@@ -11,13 +11,13 @@
                     <h1>Register:</h1>
                     <form method="post" action="signup.php">
                         <div class="input-group mb-3 mt-3">
-                            <input type="text" class="form-control" name="email" placeholder="e-mail" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="email" class="form-control" name="email" placeholder="e-mail" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="password" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="password" class="form-control" name="password" placeholder="password" aria-label="Recipient's username" aria-describedby="basic-addon2" minlength="6">
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" name="confirm_password" placeholder="confirm password" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="password" class="form-control" name="confirm_password" placeholder="confirm password" aria-label="Recipient's username" aria-describedby="basic-addon2" minlength="6">
                         </div>
                         <button class="btn btn-primary" type="submit" name="login">Create</button>
                         <p class="p-2">Already have an account? <br><a href="index.php">Login</a></p>

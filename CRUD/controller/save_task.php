@@ -1,7 +1,5 @@
+<?php include('../db.php');?>
 <?php
-
-include('db.php');
-
 if(isset($_POST['save_task'])){
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
@@ -16,13 +14,14 @@ if(isset($_POST['save_task'])){
         $_SESSION['message'] = "Task saved succesfully";
         $_SESSION['message_type'] = "success";
     
-        header("Location: index.php");
+        header("Location: ../index.php?col=default");
 
     }else{
         $_SESSION['message'] = "Please complete the fields";
         $_SESSION['message_type'] = "warning";
     
-        header("Location: index.php");
+        header("Location: ../index.php?col=default");
 
     }
 }
+?>
