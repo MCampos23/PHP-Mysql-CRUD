@@ -9,19 +9,14 @@ if(isset($_POST['save_task'])){
         $result= mysqli_query($conn, $query);
         if(!$result) {
             die("Query failed");
-        }
-    
+        }    
         $_SESSION['message'] = "Task saved succesfully";
-        $_SESSION['message_type'] = "success";
-    
+        $_SESSION['message_type'] = "success";    
         header("Location: ../index.php?col=default");
-
     }else{
         $_SESSION['message'] = "Please complete the fields";
-        $_SESSION['message_type'] = "warning";
-    
+        $_SESSION['message_type'] = "warning";    
         header("Location: ../index.php?col=default");
-
     }
 }
 ?>
